@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perdóname</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        #pregunta {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: font-size 0.3s ease;
+        }
+
+        #si {
+            background-color: green;
+            color: white;
+        }
+
+        #no {
+            background-color: red;
+            color: white;
+        }
+
+        #resultado {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="pregunta">¿Me perdonas?</h1>
+    <button id="si">Sí</button>
+    <button id="no">No</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        const siButton = document.getElementById('si');
+        const noButton = document.getElementById('no');
+        const resultado = document.getElementById('resultado');
+
+        let preguntas = [
+            "¿Me perdonas?",
+            "¿Estás segura de que no me perdonas?",
+            "¿De verdad no quieres perdonarme?",
+            "¡No hay nada que pueda hacer para que me perdones?",
+            "Por favor, mi amor, ¡perdóname!",
+            "¿No me amas:(?",
+            "¿No te importa nuestro futuro?",
+            "¿No quieres darle otra oportunidad a nuestro amor?",
+            "¡Te lo ruego, mi vida! ¡No puedo vivir sin ti!",
+            "¿No hay nada que pueda decir o hacer para cambiar tu decisión?",
+            "Está bien, una oportunidad más",
+            "¿Acaso no sientes nada por mí?",
+            "¿Cómo puedes ser tan cruel?",
+            "perdoname:(",
+            "¡Mi corazón está roto en mil pedazos!",
+            "perdón: ((",          
+            "perdonnn:(",
+            "ya porfa:(",
+            "estoy llorando",
+            ":((((",
+            "perdoname",
+            "shi?",
+            "shi???",
+            "me siento mal:("
+        ];
+
+        let indexPregunta = 0;
+        let fontSizeSi = 16;
+        let fontSizeNo = 16;
+
+        function mostrarPregunta() {
+            resultado.textContent = preguntas[indexPregunta];
+            resultado.style.display = 'block';
+        }
+
+        function agrandarSi() {
+            fontSizeSi += 12;
+            siButton.style.fontSize = fontSizeSi + 'px';
+            noButton.style.fontSize = fontSizeNo + 'px';
+        }
+
+        function empequeñecerNo() {
+            fontSizeNo -= 12;
+            siButton.style.fontSize = fontSizeSi + 'px';
+            noButton.style.fontSize = fontSizeNo + 'px';
+        }
+
+        siButton.addEventListener('click', () => {
+            alert('¡Gracias, mi blanquita! ¡Te amo!');
+        });
+
+        noButton.addEventListener('click', () => {
+            indexPregunta++;
+            mostrarPregunta();
+
+            if (indexPregunta < preguntas.length) {
+                agrandarSi();
+            } else {
+                noButton.disabled = true;
+            }
+
+            empequeñecerNo();
+        });
+
+        mostrarPregunta();
+    </script>
+</body>
+</html>
